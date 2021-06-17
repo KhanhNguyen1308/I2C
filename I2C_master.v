@@ -1,7 +1,8 @@
-module I2C_master_test( clk, rst, e_bits, SCL, SDA);
+module I2C_master(clk, rst, e_bits, SCL, SDA);
+    input clk;
     inout SDA;
     output SCL;
-    input clk, rst;
+    input rst;
     input [7:0]e_bits;
     parameter slave_addr = 7'b1010101;
     reg ack_bit = 1;
@@ -17,7 +18,6 @@ module I2C_master_test( clk, rst, e_bits, SCL, SDA);
     reg [7:0]data_tx = 8'b00000000;
     assign SCL = scl_en?~clk:1;
     assign SDA = sda_set?1'bZ:sda;
-    I2C_slave_test s1(SDA,SCL);
     /////////////////////////////////
     always @(negedge SDA)begin
       if(~SDA & SCL)begin
