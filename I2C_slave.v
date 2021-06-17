@@ -1,4 +1,4 @@
-module I2C_slave_test(SDA, SCL);
+module I2C_slave(SDA, SCL);
     inout SDA;
     input SCL;
     reg sda_set = 0, sda;
