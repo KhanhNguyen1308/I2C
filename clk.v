@@ -1,12 +1,12 @@
-module xung( CLOCK_50,clk,rs, sl);
-input CLOCK_50,rs;
+module xung( CLOCK_50,clk,rst, sl);
+input CLOCK_50,rst;
 input [1:0]sl;
 output clk;
 reg clk= 1'b0;
 integer q=0;
-always @(posedge CLOCK_50 or posedge rs) 
+always @(posedge CLOCK_50 or posedge rst) 
 begin
-if (rs==0) 
+if (rst==1) 
 	 begin
 	    q <=0;
 	 end
